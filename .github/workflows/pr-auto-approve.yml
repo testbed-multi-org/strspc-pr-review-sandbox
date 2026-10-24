@@ -153,7 +153,7 @@ jobs:
           # e2e only: treat the harness reviewer's reviews as Copilot's, and let
           # the bot author PRs in this repo.
           test-copilot-logins: ${{ vars.PR_AUTO_APPROVE_BOT_LOGIN }}
-          sandbox-repos: SteerSpec/strspc-pr-review-sandbox
+          sandbox-repos: testbed-multi-org/strspc-pr-review-sandbox
 
           # Optional: base branch(es) PRs must target (default: main). Accepts a
           # comma-separated set, e.g. 'develop,main'. Keep in sync with the
