@@ -1,0 +1,16 @@
+name: CI
+
+# The caller's workflow_run trigger matches this workflow by NAME, so keep it
+# literally "CI". It only has to give the e2e harness a check to wait for.
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 10
