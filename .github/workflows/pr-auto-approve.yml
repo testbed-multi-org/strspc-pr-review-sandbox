@@ -164,7 +164,7 @@ jobs:
     steps:
       # @v1 tracks the latest v1.x release. Pin an exact @vX.Y.Z if you prefer
       # to upgrade manually.
-      - uses: SteerSpec/strspc-pr-review@6a4dfaf25a3acb70f152520648af666ab0bcc441
+      - uses: SteerSpec/strspc-pr-review@b940907361ce50a079ddca01b2e80c146dfde1d0
         with:
           # Required: GitHub login of the bot account that will approve PRs.
           # Keep this expression identical to the loop guard in the if: above.
