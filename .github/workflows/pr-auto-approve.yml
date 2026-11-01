@@ -164,7 +164,7 @@ jobs:
     steps:
       # @v1 tracks the latest v1.x release. Pin an exact @vX.Y.Z if you prefer
       # to upgrade manually.
-      - uses: SteerSpec/strspc-pr-review@94332bf8b056a951657849b290e3f5a123dc15fe
+      - uses: SteerSpec/strspc-pr-review@7fd67b0715b8c16964e32d915a80062a825db3d9
         with:
           # Required: GitHub login of the bot account that will approve PRs.
           # Keep this expression identical to the loop guard in the if: above.
@@ -175,7 +175,7 @@ jobs:
           # retitle that raises the required rounds the earlier approval is dismissed
           # with this token, falling back to the job's GITHUB_TOKEN if it is refused.
           # An organization secret works here too.
-          bot-github-token: ${{ secrets.BOT_GITHUB_TOKEN }}
+          bot-github-token: ${{ secrets.BOT_TOKEN_SANDBOX }}
 
           # Sandbox only: treat the e2e reviewer as Copilot and allow the bot-authored
           # PRs through the self-approval guard. Never set these in a production caller.
