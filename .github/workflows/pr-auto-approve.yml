@@ -164,7 +164,7 @@ jobs:
     steps:
       # @v1 tracks the latest v1.x release. Pin an exact @vX.Y.Z if you prefer
       # to upgrade manually.
-      - uses: SteerSpec/strspc-pr-review@53feb2d25648bc6364eba6f1b5e26c32de592480
+      - uses: SteerSpec/strspc-pr-review@03002c18282d65b5ad4b0c0c55d2f41b522a17a2
         with:
           # Required: GitHub login of the bot account that will approve PRs.
           # Keep this expression identical to the loop guard in the if: above.
@@ -229,7 +229,7 @@ jobs:
           # 0 above are skipped. Disable the ruleset's automatic review first.
           request-copilot-review: ${{ vars.STRSPC_PR_AUTO_APPROVE_REQUEST_COPILOT_REVIEW }}
 
-          # STRONGLY RECOMMENDED if Copilot reviews your PRs: set it to 300.
+          # STRONGLY RECOMMENDED if Copilot reviews your PRs: set it to 600.
           # Without it, a PR whose Copilot review lands AFTER CI is never
           # re-evaluated and sits unapproved forever: Copilot's check_run is
           # GITHUB_TOKEN-created, and any workflow run Copilot itself triggers is
