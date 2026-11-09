@@ -1,0 +1,21 @@
+name: Token check
+
+# Managed by SteerSpec/strspc-pr-review e2e/pr-auto-approve/sandbox.sh check-tokens.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: SteerSpec/strspc-pr-review
+          ref: 8dbbf52ff16208f8a0c4be1215bab1a7bf19af68
+          persist-credentials: false
+      - env:
+          BOT_TOKEN_SANDBOX: ${{ secrets.BOT_TOKEN_SANDBOX }}
+        run: e2e/pr-auto-approve/token-check.sh "$GITHUB_REPOSITORY" BOT_TOKEN_SANDBOX
