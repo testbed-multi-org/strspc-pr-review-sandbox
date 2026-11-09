@@ -14,7 +14,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: SteerSpec/strspc-pr-review
-          ref: 8dbbf52ff16208f8a0c4be1215bab1a7bf19af68
+          ref: 7f38da251707cbd5da6223c372ebbc92bab2c5ee
           persist-credentials: false
       - env:
           BOT_TOKEN_SANDBOX: ${{ secrets.BOT_TOKEN_SANDBOX }}
