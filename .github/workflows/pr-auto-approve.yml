@@ -202,7 +202,7 @@ jobs:
     steps:
       # @v1 tracks the latest v1.x release. Pin an exact @vX.Y.Z if you prefer
       # to upgrade manually.
-      - uses: SteerSpec/strspc-pr-review@73ee46b3fca91361ec77a65d8213e13ec30306a8
+      - uses: SteerSpec/strspc-pr-review@0a01138a414fa7e56ee960eff2e3abffa1bd3447
         with:
           # Required: GitHub login of the bot account that will approve PRs.
           # Keep this expression identical to the loop guard in the if: above.
@@ -293,6 +293,11 @@ jobs:
           # Times to re-request Copilot's review per commit when its review errors
           # ("unable to review"), e.g. 2. 0 (default) = off.
           copilot-error-retries: ${{ vars.STRSPC_PR_AUTO_APPROVE_COPILOT_ERROR_RETRIES }}
+
+          # 'blocking' explains a skip a person must act on (a protected path, a
+          # failing check, requested changes) in one PR comment, edited in place
+          # as the reason changes. Default 'off'. Posted with bot-github-token.
+          comment-on-skip: ${{ vars.STRSPC_PR_AUTO_APPROVE_COMMENT_ON_SKIP }}
 
           # Optional: Slack bot token for approval/skip/error notifications.
           # Remove this line to disable Slack notifications.
