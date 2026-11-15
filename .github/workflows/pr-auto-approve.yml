@@ -105,6 +105,9 @@ jobs:
       pull-requests: write
       contents: read
       checks: read
+      # Reads the workflow run behind an unfinished strspc-pr-approval check, to
+      # tell that job from CI of the same name (APPROVE-038).
+      actions: read
     # Serialize runs per PR to avoid race conditions.
     # For check_run events the PR number comes from check_run.pull_requests[0].number.
     # Sweeps share one group of their own and are never cancelled: a sweep stopped
@@ -202,7 +205,7 @@ jobs:
     steps:
       # @v1 tracks the latest v1.x release. Pin an exact @vX.Y.Z if you prefer
       # to upgrade manually.
-      - uses: SteerSpec/strspc-pr-review@5863c6c8d1519cde12cb4568d36ccbe26abd2e3a
+      - uses: SteerSpec/strspc-pr-review@3275a16c3f5f834c75412148746a032b2885323a
         with:
           # Required: GitHub login of the bot account that will approve PRs.
           # Keep this expression identical to the loop guard in the if: above.
@@ -271,6 +274,11 @@ jobs:
           # 'true' to approve when no external check runs exist (e.g. docs-only
           # PRs that skip CI via path filters). Default 'false'.
           allow-no-checks: ${{ vars.STRSPC_PR_AUTO_APPROVE_ALLOW_NO_CHECKS }}
+
+          # strspc-pr-approval's caller file. Its unfinished check is not waited
+          # for only when it runs from this file (APPROVE-038). Empty means
+          # .github/workflows/pr-approval.yml; 'off' always waits for it.
+          companion-workflow: ${{ vars.STRSPC_PR_AUTO_APPROVE_COMPANION_WORKFLOW }}
 
           # 'true' to have the action request the Copilot review, so types set to
           # 0 above are skipped. Disable the ruleset's automatic review first.
